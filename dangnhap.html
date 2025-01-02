@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORENT Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #2c3e50, #bdc3c7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            width: 350px;
+            text-align: center;
+        }
+
+        .login-container img {
+            width: 80px;
+            margin-bottom: 15px;
+        }
+
+        .login-container h2 {
+            margin: 0 0 20px;
+            font-size: 24px;
+            color: #2c3e50;
+        }
+
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .login-container button:hover {
+            background-color: #2980b9;
+        }
+
+        .login-container a {
+            color: #3498db;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .login-container a:hover {
+            text-decoration: underline;
+        }
+
+        .error {
+            color: red;
+            margin-bottom: 15px;
+            display: none;
+            font-size: 14px;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: white;
+            font-size: 10px;
+            z-index: 9999;
+            pointer-events: none;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle login form submission
+            document.getElementById('login-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                var username = document.getElementById('username').value;
+                var password = document.getElementById('password').value;
+
+                if (username === 'NguyenHuuLoc' && password === '2288900185') {
+                    alert('Đăng nhập thành công!');
+                    window.location.href = 'trangchu.html';
+                } else {
+                    document.getElementById('error-message').style.display = 'block';
+                }
+            });
+
+            // Create falling snowflakes
+            const createSnowflake = () => {
+                const snowflake = document.createElement('div');
+                snowflake.classList.add('snowflake');
+                snowflake.textContent = '❄';
+                snowflake.style.left = Math.random() * 100 + 'vw';
+                snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+                snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+                document.body.appendChild(snowflake);
+
+                setTimeout(() => {
+                    snowflake.remove();
+                }, 5000);
+            };
+
+            setInterval(createSnowflake, 100);
+        });
+    </script>
+</head>
+<body>
+    <div class="login-container">
+        <img src="ảnh/LOGO.png" alt="ORENT Logo">
+        <h2>Vui Lòng Đăng Nhập</h2>
+        <form id="login-form">
+            <div id="error-message" class="error">Tên đăng nhập hoặc mật khẩu không đúng!</div>
+            <input type="text" id="username" name="username" placeholder="Email / Số điện thoại" required>
+            <input type="password" id="password" name="password" placeholder="Mật khẩu" required>
+            <a href="#">Quên mật khẩu?</a>
+            <button type="submit">ĐĂNG NHẬP</button>
+            <p>Bạn chưa có tài khoản? <a href="#">Đăng ký ngay</a></p>
+        </form>
+    </div>
+</body>
+</html>
